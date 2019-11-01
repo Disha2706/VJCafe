@@ -56,27 +56,30 @@ def Ref():
     rand.set(randomRef)
 
     COF = float(Fries.get())
-    COV = float(veg.get())
-    COC = float(Chicken.get())
+    COP = float(Pasta.get())
     COD = float(Drinks.get())
+    COS = float(Sizzlers.get())
+    CO = float(Cookies.get())
+    CC = float(Cheesecake.get())
 
-    CostOfFries = COF*100
-    CostOfDrinks = COD*60
-    CostOfChickenMeal = COC*550
-    CostOfVegMeal = COV*300
+    CostOfFries = COF * 100
+    CostOfDrinks = COD * 50
+    CostOfPasta = COP * 180
+    CostOfSizzlers = COS * 300
+    CostOfCookies = CO * 120
+    CostOfCheesecake= CC * 200
 
-    CostOfMeal = "Rs",str('%.2f' %(CostOfFries + CostOfDrinks + CostOfChickenMeal + CostOfVegMeal))
-    PayTax = ((CostOfFries + CostOfDrinks + CostOfChickenMeal + CostOfVegMeal)*0.12)
-    Total = (CostOfFries + CostOfDrinks + CostOfChickenMeal + CostOfVegMeal)
-    Service_crg = ((CostOfFries + CostOfDrinks + CostOfChickenMeal + CostOfVegMeal)/99)
-    OverallCost = "Rs",str('%.2f' %(Total+PayTax+Service_crg))
-    service_c = "Rs",str('%.2f' %(Service_crg))
+
+
+    CostOfMeal = "Rs",str('%.2f' %(CostOfFries + CostOfDrinks + CostOfPasta + CostOfSizzlers+CostOfCheesecake+CostOfCookies))
+    PayTax = ((CostOfFries + CostOfDrinks + CostOfPasta + CostOfSizzlers+CostOfCheesecake+CostOfCookies)*0.02)
+    Total = (CostOfFries + CostOfDrinks + CostOfPasta + CostOfSizzlers+CostOfCheesecake+CostOfCookies)
+
+    OverallCost = "Rs",str('%.2f' %(Total+PayTax))
+
     TaxPaid = "Rs",str('%.2f' %(PayTax))
 
-    service.set(service_c)
-    cost.set(CostOfMeal)
     Tax.set(TaxPaid)
-    SubTotal.set(CostOfMeal)
     TotalCost.set(OverallCost)
 
 def qExit():
@@ -85,14 +88,13 @@ def qExit():
 def Reset():
     rand.set("")
     Fries.set("0")
-    veg.set("0")
+    Pasta.set("0")
     Drinks.set("0")
-    Chicken.set("0")
-    cost.set("")
-    service.set("")
+    Sizzlers.set("0")
+    Cookies.set("0")
+    Cheesecake.set("0")
     Tax.set("")
-    SubTotal("")
-    TotalCost("")
+    TotalCost.set("")
 
  #..............................................................................
 
@@ -138,18 +140,18 @@ lblFries.grid(row=1,column=0)
 txtFries= Entry(lf,font = ('arial','16','bold'),textvariable = Fries,bd =10,insertwidth=4,bg ='pink',justify='right')
 txtFries.grid(row=1,column=1)
 
-veg = StringVar()
-veg.set("0")
-lblVeg = Label(lf,font = ('arial','16','bold'),text="Veg Meal",bd = 16, anchor = 'w')
+Pasta = StringVar()
+Pasta.set("0")
+lblVeg = Label(lf,font = ('arial','16','bold'),text="Pasta",bd = 16, anchor = 'w')
 lblVeg.grid(row=2,column=0)
-txtVeg= Entry(lf,font = ('arial','16','bold'),textvariable = veg,bd =10,insertwidth=4,bg ='pink',justify='right')
+txtVeg= Entry(lf,font = ('arial','16','bold'),textvariable = Pasta,bd =10,insertwidth=4,bg ='pink',justify='right')
 txtVeg.grid(row=2,column=1)
 
-Chicken = StringVar()
-Chicken.set("0")
-lblChicken = Label(lf,font = ('arial','16','bold'),text="Chicken Meal",bd = 16, anchor = 'w')
+Sizzlers = StringVar()
+Sizzlers.set("0")
+lblChicken = Label(lf,font = ('arial','16','bold'),text="Sizzlers",bd = 16, anchor = 'w')
 lblChicken.grid(row=3,column=0)
-txtChicken= Entry(lf,font = ('arial','16','bold'),textvariable = Chicken,bd =10,insertwidth=4,bg ='pink',justify='right')
+txtChicken= Entry(lf,font = ('arial','16','bold'),textvariable = Sizzlers,bd =10,insertwidth=4,bg ='pink',justify='right')
 txtChicken.grid(row=3,column=1)
 
 Drinks = StringVar()
@@ -159,30 +161,33 @@ lblDrinks.grid(row=4,column=0)
 txtDrinks= Entry(lf,font = ('arial','16','bold'),textvariable = Drinks,bd =10,insertwidth=4,bg ='pink',justify='right')
 txtDrinks.grid(row=4,column=1)
 
-#--------------------------------------Resturant Information  2-------------------------------------
-cost = StringVar()
-lblcost = Label(lf,font = ('arial','16','bold'),text="Cost of Meal",bd = 16, anchor = 'w')
-lblcost.grid(row=0,column=2)
-txtcost = Entry(lf,font = ('arial','16','bold'),textvariable = cost,bd =10,insertwidth=4,bg ='pink',justify='right')
-txtcost.grid(row=0,column=3)
+Pizza = StringVar()
+Pizza.set("0")
+lblDrinks = Label(lf,font = ('arial','16','bold'),text="Pizza",bd = 16, anchor = 'w')
+lblDrinks.grid(row=0,column=2)
+txtDrinks= Entry(lf,font = ('arial','16','bold'),textvariable = Pizza,bd =10,insertwidth=4,bg ='pink',justify='right')
+txtDrinks.grid(row=0,column=3)
 
-service = StringVar()
-lblservice = Label(lf,font = ('arial','16','bold'),text="Service Cost ",bd = 16, anchor = 'w')
+
+Cookies = StringVar()
+Cookies.set("0")
+lblservice = Label(lf,font = ('arial','16','bold'),text="Cookies ",bd = 16, anchor = 'w')
 lblservice.grid(row=1,column=2)
-txtservice= Entry(lf,font = ('arial','16','bold'),textvariable =service,bd =10,insertwidth=4,bg ='pink',justify='right')
+txtservice= Entry(lf,font = ('arial','16','bold'),textvariable =Cookies,bd =10,insertwidth=4,bg ='pink',justify='right')
 txtservice.grid(row=1,column=3)
 
 Tax = StringVar()
 lblTax = Label(lf,font = ('arial','16','bold'),text="Tax",bd = 16, anchor = 'w')
-lblTax.grid(row=2,column=2)
+lblTax.grid(row=3,column=2)
 txtTax= Entry(lf,font = ('arial','16','bold'),textvariable = Tax,bd =10,insertwidth=4,bg ='pink',justify='right')
-txtTax.grid(row=2,column=3)
+txtTax.grid(row=3,column=3)
 
-SubTotal = StringVar()
-lblSubTotal = Label(lf,font = ('arial','16','bold'),text="SubTotal",bd = 16, anchor = 'w')
-lblSubTotal.grid(row=3,column=2)
-txtSubTotal= Entry(lf,font = ('arial','16','bold'),textvariable = SubTotal,bd =10,insertwidth=4,bg ='pink',justify='right')
-txtSubTotal.grid(row=3,column=3)
+Cheesecake = StringVar()
+Cheesecake.set("0")
+lblservice = Label(lf,font = ('arial','16','bold'),text="Cheesecake ",bd = 16, anchor = 'w')
+lblservice.grid(row=2,column=2)
+txtservice= Entry(lf,font = ('arial','16','bold'),textvariable =Cheesecake,bd =10,insertwidth=4,bg ='pink',justify='right')
+txtservice.grid(row=2,column=3)
 
 TotalCost = StringVar()
 lblTotalCost = Label(lf,font = ('arial','16','bold'),text="TotalCost",bd = 16, anchor = 'w')
